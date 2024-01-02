@@ -1,0 +1,89 @@
+plugins {
+	// Add the required dependencies for org.eclipse.acceleo
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url 'https://download.eclipse.org/modeling/mmt/acceleo/updates/releases/'
+	}
+}
+
+dependencies {
+		 implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    implementation 'org.eclipse.emf:org.eclipse.emf.ecore:latest.integration'
+    implementation 'org.eclipse.emf:org.eclipse.emf.common:latest.integration'
+    implementation 'org.eclipse.emf:org.eclipse.emf.ecore.change:latest.integration'
+    implementation 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:latest.integration'
+// the correct ocl implementation
+	implementation 'org.eclipse.ocl:org.eclipse.ocl:latest.integration'
+	implementation 'org.eclipse.ocl:org.eclipse.ocl.ecore:latest.integration'
+	implementation 'org.eclipse.ocl:org.eclipse.ocl.common:latest.integration'
+	
+	
+
+	implementation "org.eclipse.acceleo:org.eclipse.acceleo.engine:3.5.1.201409021433"
+    implementation "org.eclipse.acceleo:org.eclipse.acceleo.parser:3.5.1.201409021433"
+    implementation "org.eclipse.acceleo:org.eclipse.acceleo.common:3.5.1.201409021433"
+    implementation "org.eclipse.acceleo:org.eclipse.acceleo.model:3.5.1.201409021433"
+	implementation group: 'org.eclipse.core', name: 'org.eclipse.core.runtime', version: '3.7.0'
+
+	// Yaml
+	implementation 'org.yaml:snakeyaml:1.28'
+
+
+}
+
+eclipse {
+	project {
+		natures 'org.eclipse.acceleo.ide.ui.AcceleoNature'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+	  maven {
+        url 'https://download.eclipse.org/modeling/mmt/acceleo/updates/releases/'
+    }
+
+}
+
+  repositories {
+    jcenter()
+    maven { url 'https://repo.eclipse.org/content/groups/acceleo' }
+  }
+
+eclipse {
+    project {
+        natures 'org.eclipse.acceleo.ide.ui.AcceleoNature'
+    }
+}
+
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

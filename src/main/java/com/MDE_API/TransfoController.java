@@ -80,7 +80,17 @@ public class TransfoController {
             // Include the exception details in the response body
             String errorMessage = "Internal Server Error: " + e.getMessage();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorMessage.getBytes());
+
         }
+        finally{
+            Path path = Paths.get("initConfig.model");
+            try {
+                Files.delete(path);
+                Files.delete(Paths.get("JenkinsFile"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
-    
+}
+   
 }
